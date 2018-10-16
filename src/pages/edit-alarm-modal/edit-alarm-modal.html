@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>EDIT</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal()" class="cancel-icon" color="primary_dark">
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding class="content">
+  <ion-list class="content__list">
+    <ion-item>
+      <div class="destination">Destination:</div>
+      <div class="destination__alarm">{{alarm.destination.place}}</div>
+    </ion-item>
+    <ion-item>
+      <div class="radius">Radius arround location:
+        <ion-badge class="radius__badge">{{alarm.destination.radius}}</ion-badge>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-range min="1" max="20" snaps="true" [(ngModel)]="alarm.destination.radius" color="danger" pin="true">
+        <ion-label range-left>1km</ion-label>
+        <ion-label range-right>20km</ion-label>
+      </ion-range>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Add reminder</ion-label>
+      <ion-textarea [(ngModel)]='alarm.reminder'> {{alarm.ringtone.name}}</ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ringtone</ion-label>
+      <ion-select [(ngModel)]="alarm.ringtone.name" (ionChange)=onChange(alarm.ringtone) checked="ring.name == alarm.ringtone.name">
+        <ion-option *ngFor="
+        let ring of ringtones" [value]="ring.name" checked="ring.name == alarm.ringtone.name">
+          {{ring.name}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <div class='update_icon' text-right margin>
+    <ion-icon name="checkmark-circle" (click)='updateAlarm(alarm)' color="primary_dark" padding></ion-icon>
+  </div>
+
+</ion-footer>

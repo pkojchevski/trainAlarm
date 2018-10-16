@@ -1,0 +1,61 @@
+page-edit-alarm-modal {
+
+  .content {
+    background-color: color($colors, secondary_light);
+
+    &__list ion-item {
+      background-color: color($colors, secondary_light);
+    }
+  }
+
+  .destination {
+    font-size: 1em;
+    display: inline-block;
+
+    &__alarm {
+      display: inline;
+      font-size: 1em;
+      float: right;
+    }
+  }
+
+  .radius {
+    display: block;
+    z-index: 999;
+    font-size: 1em;
+
+    &__badge {
+      float: right;
+      font-size: 1em;
+      background: color($colors, primary_dark);
+    }
+  }
+
+
+
+  .list-md .item-block .item-inner {
+    border-bottom: 1px solid color($colors, secondary_dark);
+  }
+
+  text-input-placeholder-color {
+    color: #000 !important;
+    padding-left: 0;
+  }
+
+  ion-label {
+    color: #000 !important;
+  }
+
+  .cancel-icon {
+    font-size: 24px;
+  }
+
+  .update_icon {
+    // margin-left: 70%;
+    font-size: 48px;
+  }
+
+  .footer-md::before {
+    position: relative;
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "trainAlarm",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

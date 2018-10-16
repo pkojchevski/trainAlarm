@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{data?.destination?.place}}</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">Close</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img src="../../assets/icon/icon_1024px.png" class="alarm_image">
+
+  <ion-grid>
+    <ion-row align-items-end padding-bottom justify-content-end>
+      <ion-col col-10>
+        <strong class="destination">Destination is close!</strong>
+      </ion-col>
+      <ion-col col-2>
+        <ion-icon name="flag" color="primary"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center justify-content-center>
+      <ion-col col-auto>
+        <h2>{{data.reminder}}</h2>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

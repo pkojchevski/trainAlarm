@@ -1,0 +1,19 @@
+<div class="search">
+  <div class="autocomplete">
+    <ion-icon class="autocomplete__search" name="search"></ion-icon>
+    <input #input class="autocomplete__input" (focus)="onFocus($event)" (focusout)="onFocusOut($event)" placeholder="Where to..."
+      [(ngModel)]="destination" (keydown)="search($event)" />
+
+    <!-- <div class="autocomplete__icons"> -->
+    <ion-icon class="autocomplete__pin" name="pin" [@pinIcon]="pinIconState">
+    </ion-icon>
+    <ion-icon class="autocomplete__close" name="close-circle" [@closeIcon]="closeIconState" (click)="resetInput()"></ion-icon>
+  </div>
+  <!-- </div> -->
+
+  <ion-list>
+    <ion-item *ngFor="let place of places" (click)="choosedPlace(place)">
+      {{place?.display_name}}
+    </ion-item>
+  </ion-list>
+</div>

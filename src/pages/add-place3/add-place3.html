@@ -1,0 +1,55 @@
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons end>
+      <button ion-button icon-only (click)='goBack()' color="black" class="backspace">
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+    <div class="new">
+      <img margin-left src="../../assets/icon/icon.png" width='50px' height='50px' class='addings_icon'>
+      <ion-title>Add Place</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div class="search-bar__autocomplete">
+    <!-- <ion-searchbar [(ngModel)]="place" (ionInput)="search($event)" (ionClear)="ionClean()">
+    </ion-searchbar> -->
+    <search-bar (destinationSelected)="addPlaceOnMap($event)"></search-bar>
+
+    <!-- <input class="input-search" type="search" id="address-input" placeholder="Search places..." [(ngModel)]="place" /> -->
+    <!-- <ion-list>
+      <ion-item *ngFor="let place of places" (click)="addPlaceOnMap(place)">
+        {{place?.display_name}}
+      </ion-item>
+    </ion-list> -->
+  </div>
+
+  <div class="map" id="map"></div>
+
+  <div class="alarm">
+    <ion-icon class="alarm-icon_add" [@rubberBand]="rubberBandState" [@bounceInRight]="BounceInRightState"
+      (@rubberBand.done)="resetRubberBand()" name="add-circle" (click)='addAlarm()' color='secondary'></ion-icon>
+    <!-- <ion-icon name="checkmark-circle" color='secondary' class="alarm-icon_mark"></ion-icon> -->
+    <ion-range [@bounceInLeft]="BounceInLeftState" min="1" max="20" snaps="true" [(ngModel)]="radius" color="danger"
+      pin="true">
+      <ion-label range-left>1km</ion-label>
+      <ion-label range-right>20km</ion-label>
+    </ion-range>
+  </div>
+  <!--
+  <ion-item class="reminder" [@bounceInRight]="BounceInRightState">
+    <ion-textarea [(ngModel)]="reminder" placeholder="Add Message/Reminder"></ion-textarea>
+  </ion-item> -->
+
+
+  <!-- <div class='speed' *ngIf="speedValue != null">
+    <div class="speednumber">{{speedValue}}</div>
+    <div class="speedmeasure">km/h</div>
+  </div> -->
+  <div class="alarm-list" (click)="goToAlarmList()">
+    <img src="../../assets/icon/alarm_clock_icon_70x70px.svg" />
+  </div>
+
+</ion-content>

@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <!-- <ion-buttons end>
+      <button ion-button icon-only (click)="goToDestination()" class="add">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons> -->
+    <div class="addings">
+      <!-- <img margin-left src="../../assets/icon/alarm_app_icon.svg" width='60px' height='60px' class='addings__icon'> -->
+      <!-- <div class="addings_speed">{{speed|async}}
+        <small>km/h</small>
+      </div> -->
+      <div padding-left>
+        <h4 class="title">Your's alarms</h4>
+      </div>
+
+    </div>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content" padding>
+
+  <div *ngIf="alarms.length !== 0 else noAlarms">
+    <div class="swing" [@swing]="alarms.length">
+      <ion-list *ngFor='let alarm of alarms; let i = index'>
+        <ion-item-sliding (ionDrag)="logDrag($event, alarm, i, slidingItem)" class="items" #slidingItem>
+          <ion-item color="secondary_light" #item>
+            <ion-label text wrap>
+              <h2>{{alarm?.destination.place}}</h2>
+              <p><small>{{alarm?.destination.location}}</small></p>
+            </ion-label>
+            <ion-toggle [(ngModel)]='alarm.isActive' (ionChange)="turnOnOfAlarm(alarm)"></ion-toggle>
+            <ion-icon name='alarm' item-start [ngClass]="{'active': alarm.isActive}"></ion-icon>
+          </ion-item>
+          <ion-item-options side="right" (ionSwipe)="deleteAlarm(alarm, i)">
+            <button ion-button expandable (click)="deleteAlarm(alarm, i)" color="danger">
+              <ion-icon class='trash_icon' name="trash"></ion-icon>
+            </button>
+          </ion-item-options>
+          <ion-item-options side="left">
+            <button ion-button (click)="modalEditAlarmOpen(alarm, i, slidingItem)" class='editBtn'>
+              <ion-icon class='open_icon' name="open"></ion-icon>
+            </button>
+
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  </div>
+
+
+
+  <!-- <ion-item *ngIf="!alarms || alarms.length === 0" text-wrap>
+    No alarms choosed. Please press <span>
+      <ion-icon name="add-circle"></ion-icon>
+    </span> button to add alarm
+  </ion-item> -->
+  <!-- </div> -->
+
+  <ng-template #noAlarms>
+    <ion-item color="secondary_light">
+      <h2>Please press icon
+        <span>
+          <ion-icon name="add-circle" color="#fff"></ion-icon>
+        </span> for adding alarm</h2>
+    </ion-item>
+  </ng-template>
+</ion-content>
+
+<a class="footer" (click)="goToDestination()">
+  <img src="../../assets/icon/alarm_add_icon_70x70px.svg" />
+</a>

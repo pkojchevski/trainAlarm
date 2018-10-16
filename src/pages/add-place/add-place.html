@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <button ion-button icon-only (click)='goToHome()'>
+        <ion-icon name="backspace"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Add Destination</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form name="form" #f="ngForm" (ngSubmit)="addDestination()">
+    <ion-item>
+      <ion-input type="text" name="city" placeholder="Add City" [(ngModel)]='city' #destination='ngModel'></ion-input>
+      <button ion-button item-right class="primary" type="submit" [disabled]="!f.valid">
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-item>
+  </form>
+  <div id="map" style="width:100%; height:70%;"></div>
+</ion-content>
